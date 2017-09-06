@@ -78,6 +78,9 @@ return htmlTemplate;
 }
 
 
+
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -86,6 +89,17 @@ var counter=0;
 app.get('/:counter', function(req,res){
     counter = counter+1;
     res.send(counter.toString());
+    
+});
+
+var names = [];
+//app.get('/submit-name/:name',function(req, res){this is one way to submit the url
+    app.get('/submit-name',function(req, res){//we pass the values as query
+    var name = req.query.name;
+    
+    names.push(name);
+    //json : javascript objct notation--- way of converting javascript objects into the string
+    res.send(JSON.stringify(names));
     
 });
 app.get('/:articleName', function(req,res){
@@ -98,16 +112,7 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
-var names = [];
-app.get('/submit-name/:name',function(req, res){
-    
-    var name = req.params.name;
-    
-    names.push(name);
-    //json : javascript objct notation--- way of converting javascript objects into the string
-    res.send(JSON.stringify(names));
-    
-});
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
