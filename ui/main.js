@@ -32,9 +32,13 @@ button.onclick = function(){
     request.open('GET', 'http://saralanandipati.imad.hasura-app.io/counter',true);
     request.send(null);
     
+
+    
+};
+
     var nameInput = document.getElementById("name");
     console.log('nameInput!');
-    var name = nameInput.value;
+    var namevalue = nameInput.value;
     var submit = document.getElementById("submit_btn");
     console.log('submit!');
     submit.onclick = function(){
@@ -51,5 +55,3 @@ button.onclick = function(){
         
         
     }
-    
-};
