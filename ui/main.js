@@ -1,5 +1,5 @@
 console.log('Loaded!');
-alert("main");
+window.alert("main");
 var button = documnet.getElementById("counter");
 
 alert("buttonvalue");
