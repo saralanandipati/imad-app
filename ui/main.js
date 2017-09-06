@@ -1,8 +1,6 @@
-console.log('Loaded!');
-window.alert("main");
+
 var button = document.getElementById("counter");
 
-alert("buttonvalue");
 
 button.onclick = function(){
     //create a reqest object
@@ -10,9 +8,9 @@ button.onclick = function(){
     
     request.onreadystatechange = function(){
         if (request.readyState === XMLHttpRequest.DONE){
-            alert("inside readystate");
+           
             if(request.state === 200){
-                alert("inside readystate 200");
+           
                 var counter = request.responseText;
                 var span = document.getElementById("count");
                 span.innerHTML = counter.toString();
