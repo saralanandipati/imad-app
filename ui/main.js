@@ -42,16 +42,41 @@ button.onclick = function(){
     var submit = document.getElementById("submit_btn");
     console.log('submit!');
     submit.onclick = function(){
-        console.log('inside submit()!');
-        var names = ['name1','name2','name3'];
-        var list='';
+        
+        
+        var request = new XMLHttpRequest();
+    console.log('loaded123!');
+
+    
+    request.onreadystatechange = function(){
+        console.log('loaded1234!');
+
+        if (request.readyState === XMLHttpRequest.DONE){
+           console.log('loaded12345!');
+
+            if(request.status === 200){
+             console.log('inside submit()!');
+            var names = request.responseText;
+            names = JSON.parse(names);
+            var list='';
         for(var i=0; i<names.length;i++){
             console.log('inside for loop');
             list += '<li>'+ names[i] + '</li>';
-        }
-        
-        var ul =  document.getElementById("nameList");
+          }
+         var ul =  document.getElementById("nameList");
         ul.innerHTML = list;
+                
+           }
+        }
+    };
+    
+    //make the request
+    
+    request.open('GET', 'http://saralanandipati.imad.hasura-app.io/submit-name?name='+namevalue,true);
+    request.send(null);
+       
+        
+       
         
         
-    }
+    };
