@@ -1,6 +1,6 @@
 console.log('Loaded!');
 window.alert("main");
-var button = documnet.getElementById("counter");
+var button = document.getElementById("counter");
 
 alert("buttonvalue");
 
