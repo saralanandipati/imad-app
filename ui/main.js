@@ -1,4 +1,4 @@
-
+console.log('loaded!');
 var button = document.getElementById("counter");
 
 
