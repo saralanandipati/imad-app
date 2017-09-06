@@ -36,9 +36,7 @@ button.onclick = function(){
     
 };
 
-    var nameInput = document.getElementById("name");
-    console.log('nameInput!');
-    var namevalue = nameInput.value;
+    
     var submit = document.getElementById("submit_btn");
     console.log('submit!');
     submit.onclick = function(){
@@ -71,6 +69,8 @@ button.onclick = function(){
     };
     
     //make the request
+    var nameInput = document.getElementById("name");
+    var namevalue = nameInput.value;
     
     request.open('GET', 'http://saralanandipati.imad.hasura-app.io/submit-name?name='+namevalue,true);
     request.send(null);
