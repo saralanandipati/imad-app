@@ -16,14 +16,14 @@ button.onclick = function(){
         if (request.readyState === XMLHttpRequest.DONE){
            console.log('loaded12345!');
 
-           // if(request.state === 200){
+            if(request.status === 200){
            console.log('loaded123456!');
 
                 var counter = request.responseText;
                 var span = document.getElementById("count");
                 span.innerHTML = counter.toString();
                 
-           // }
+           }
         }
     }
     
