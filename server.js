@@ -75,8 +75,8 @@ app.get('/test-db',function(req,res){
 
 app.post('/create-user', function(req,res){
     
-    var userName = req.username;
-    var password = req.password;
+    var userName = req.body.username;
+    var password = req.body.password;
     var salt = crypto.randomBytes(128).toString('hex');
     var dbContent = hash(password,salt);
     
