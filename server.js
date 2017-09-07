@@ -114,17 +114,18 @@ app.post('/login', function(req,res){
             res.send(JSON.parse('{"message": "username/password incorrect"}'));
             }
             else{
-                
-                var dbString = result.rows[0].password; 
-                var salt = dbString.split('$')[2];
-                var hashedPassword = hash(dbString,salt);
-                if(hashedPassword === dbString){
-                    req.session.auth = {userId : result.rows[0].id};
-                    res.setHeader('content-type','application/json');
+                 res.setHeader('content-type','application/json');
                     res.send(JSON.parse('{"message": "credentials are correct"}'));
-                }else{
-                    res.send(403).send("username/password is incorrect");
-                }
+                // var dbString = result.rows[0].password; 
+                // var salt = dbString.split('$')[2];
+                // var hashedPassword = hash(dbString,salt);
+                // if(hashedPassword === dbString){
+                //     req.session.auth = {userId : result.rows[0].id};
+                //     res.setHeader('content-type','application/json');
+                //     res.send(JSON.parse('{"message": "credentials are correct"}'));
+                // }else{
+                //     res.send(403).send("username/password is incorrect");
+                // }
            
         }
         
