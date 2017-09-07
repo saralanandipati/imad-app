@@ -66,6 +66,25 @@ app.get('/test-db',function(req,res){
     
     
 });
+
+app.post('/create-user', function(req,res){
+    
+    var userName = req.username;
+    var password = req.password;
+    var salt = crypto.randomBytes(128).toString('hex');
+    var dbContent = hash(password,salt);
+    
+    pool.query('INSERT INTO "user" (username, password) values ($1,$2)', [username, dbContent], function(err,result){
+        
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.setHeader('content-type','application/json');
+            res.send(JSON.parse('{"message": "user successfully created"}'));
+        }
+        
+    });
+});
 var counter=0;
 app.get('/counter', function(req,res){
     counter = counter+1;
