@@ -23,7 +23,7 @@ app.use(morgan('combined'));
 // these statements config express to use these modules, and only need to be run once
 app.use(bodyParser.json());         
 app.use(bodyParser.urlencoded({ extended: true }));                                
-app.use(multer);
+//app.use(multer);
 
 function hash(password,salt){
     return password + salt;
