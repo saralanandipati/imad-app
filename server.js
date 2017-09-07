@@ -17,6 +17,11 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
+function hash(password,salt){
+    return password + salt;
+    
+}
+
 function createTemplate(data){
     
     var title = data.title;
