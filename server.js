@@ -126,17 +126,16 @@ app.post('/login', function(req,res){
             else{
                  res.setHeader('content-type','application/json');
                     res.send(JSON.parse('{"message": "credentials are correct"}'));
-                    // we need to check with other peoples abouth this logic mainly know about hash() function
-                // var dbString = result.rows[0].password; 
-                // var salt = dbString.split('$')[2];
-                // var hashedPassword = hash(dbString,salt);
-                // if(hashedPassword === dbString){
-                //     req.session.auth = {userId : result.rows[0].id};
-                //     res.setHeader('content-type','application/json');
-                //     res.send(JSON.parse('{"message": "credentials are correct"}'));
-                // }else{
-                //     res.send(403).send("username/password is incorrect");
-                // }
+                 var dbString = result.rows[0].password; 
+                 var salt = dbString.split('$')[2];
+                 var hashedPassword = hash(password,salt);
+                 if(hashedPassword === dbString){
+                     req.session.auth = {userId : result.rows[0].id};
+                     res.setHeader('content-type','application/json');
+                     res.send(JSON.parse('{"message": "credentials are correct"}'));
+                 }else{
+                     res.send(403).send("username/password is incorrect");
+                 }
            
         }
         
