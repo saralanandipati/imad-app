@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 function hash(input,salt){
     
-    var hashed = crypto.pbkdf2Sync(this.input, this.salt, 10000, 64);
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 64);
     return hashed.toString('hex');
     
     //return['pbkdf2',"10000",salt,hashed.toString('hex')].join('$');
