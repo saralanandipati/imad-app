@@ -154,7 +154,7 @@ app.get('/get_articles', function(req,res){
     //articleName === articleOne/articleTwo/articleThee
    // var articleName = req.params.articleName;
     
-    pool.query('SELECT * from "article" where title = "article-one" ', function(err,result){
+    pool.query('SELECT * from "article"', function(err,result){
        if(err){
            res.status(500).send(err.toString());
        } else if(result.rows.length === 0){
