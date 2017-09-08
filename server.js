@@ -25,6 +25,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));                                
 //app.use(multer);
 
+function hash(input,salt){
+    
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512,'sha512');
+    return hashed.toString('hex');
+    
+    //return['pbkdf2',"10000",salt,hashed.toString('hex')].join('$');
+    //return password + salt;
+    
+}
 
 function createTemplate(data){
     
@@ -57,14 +66,7 @@ return htmlTemplate;
 }
 
 
-function hash(input,salt){
-    
-    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512,'sha512');
-    
-    return['pbkdf2',"10000",salt,hashed.toString('hex')].join('$');
-    //return password + salt;
-    
-}
+
 
 app.get('/hash/:input', function(req,res){
     var hashedString = hash(req.param.input,'this-is-some-random-string');
