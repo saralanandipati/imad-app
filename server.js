@@ -159,7 +159,7 @@ var names = [];
     
 });
 
-app.get('/get_articles', function(req,res){
+app.get('/get-articles', function(req,res){
    
     pool.query('SELECT * from "article"', function(err,result){
        if(err){
