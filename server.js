@@ -124,8 +124,8 @@ app.post('/login', function(req,res){
             res.send(JSON.parse('{"message": "username/password incorrect"}'));
             }
             else{
-                 res.setHeader('content-type','application/json');
-                    res.send(JSON.parse('{"message": "credentials are correct"}'));
+                // res.setHeader('content-type','application/json');
+                 //   res.send(JSON.parse('{"message": "credentials are correct"}'));
                  var dbString = result.rows[0].password; 
                  var salt = dbString.split('$')[2];
                  var hashedPassword = hash(password,salt);
